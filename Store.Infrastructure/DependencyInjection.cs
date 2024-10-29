@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Store.Domain.Interfaces;
 using Store.Infrastructure.Data;
+using Store.Infrastructure.Repositories;
 
 namespace Store.Infrastructure
 {
@@ -12,6 +14,9 @@ namespace Store.Infrastructure
             {
                 options.UseSqlServer("Server=.;Database=StoreDb;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=true;");
             });
+
+            services.AddScoped<IUserRepository, UserRepository>();
+
             return services;
         }
     }
