@@ -50,7 +50,7 @@ namespace Store.Infrastructure.Repositories
                 return user;
             }
 
-            return userEntity;
+            return null;
         }
     }
 }
