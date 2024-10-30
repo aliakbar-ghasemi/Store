@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Store.Domain.Interfaces;
 using Store.Infrastructure.Data;
 using Store.Infrastructure.Repositories;
+using Store.Infrastructure.Services;
 
 namespace Store.Infrastructure
 {
@@ -17,6 +18,13 @@ namespace Store.Infrastructure
             });
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAccountingSoftwareRepository, AccountingSoftwareRepository>();
+
+            //services.AddHttpClient<IAccountingSoftwareHttpClientService, AccountingSoftwareHttpClientService>(options =>
+            services.AddHttpClient<AccountingSoftwareHttpClientService>(options =>
+            {
+                options.BaseAddress = new Uri("https://api.coindesk.com/v1/");
+            });
 
             return services;
         }
