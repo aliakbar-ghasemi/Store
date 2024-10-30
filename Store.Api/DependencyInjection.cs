@@ -5,11 +5,11 @@ namespace Store.Api
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddApiDI(this IServiceCollection services)
+        public static IServiceCollection AddApiDI(this IServiceCollection services, IConfiguration configuration)
         {
             services
                 .AddApplicationDI()
-                .AddInfrastructureDI();
+                .AddInfrastructureDI(configuration);
 
             return services;
         }
